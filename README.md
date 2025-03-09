@@ -6,19 +6,18 @@ idlesauce (for its good vibes, for inspiring the idea and the offsets)<br>
 
 And :
 
-Buzzer
-sleirsgoevy
-ChendoChap
-astrelsky
-illusion
-CTN & SiSTR0 for PS5Debug
-Nomadic
-Echo Stretch
-
-Dizz
-BedroZen
-MODDED WARFARE
-Nicit
-DarkStar
-zecoxao and keys friend
+Buzzer<br>
+sleirsgoevy<br>
+ChendoChap<br>
+astrelsky<br>
+illusion<br>
+CTN & SiSTR0 for PS5Debug<br>
+Nomadic<br>
+Echo Stretch<br>
+Dizz<br>
+BedroZen<br>
+MODDED WARFARE<br>
+Nicit<br>
+DarkStar<br>
+zecoxao and keys friend<br>
 and to the entire PS5 scene community....
