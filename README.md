@@ -21,3 +21,5 @@ Nicit<br>
 DarkStar<br>
 zecoxao and keys friend<br>
 and to the entire PS5 scene community....
+
+Special thanks to @SonysNightmare, as a programmer he is an excellent comedian =)
