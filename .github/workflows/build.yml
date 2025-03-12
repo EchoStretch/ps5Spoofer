@@ -1,0 +1,58 @@
+name: Build payload
+
+on:
+  pull_request:
+    paths:
+      - 'include/**'
+      - 'source/**'
+      - 'Makefile'
+  push:
+    paths:
+      - 'include/**'
+      - 'source/**'
+      - 'Makefile'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  attestations: write
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    # based on https://github.com/ps5-payload-dev/elfldr/blob/9198efdb02535e6647b00db6d9dac223874b1a87/.github/workflows/ci.yml#L23
+    - name: Checkout SDK
+      uses: actions/checkout@v3
+      with:
+        repository: ps5-payload-dev/sdk
+        path: sdk
+
+    - name: Setup SDK
+      working-directory: sdk
+      run: |
+        sudo apt update
+        sudo apt install xxd clang-15 lld-15
+        make DESTDIR=${{ runner.tool_cache }}/ps5-payload-sdk clean install
+        echo PS5_PAYLOAD_SDK=${{ runner.tool_cache }}/ps5-payload-sdk >> $GITHUB_ENV
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Build
+      run: make
+
+    - name: Attest
+      uses: actions/attest-build-provenance@v1
+      continue-on-error: true  # this will fail if the repo is private
+      with: 
+        subject-path: spoofer.elf
+
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: ps5spoofer
+        path: spoofer.elf
+        if-no-files-found: error
