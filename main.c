@@ -9,19 +9,46 @@ typedef struct notify_request {
 
 
 int sceKernelSendNotificationRequest(int, notify_request_t*, size_t, int);
-unsigned int OFFSET_KERNEL_PS4SDK_761 = 0x0240BE58;
-unsigned int OFFSET_KERNEL_PS4SDK_650 = 0x0241ACA8;
-unsigned int OFFSET_KERNEL_PS4SDK_550 = 0x023D9048;
-unsigned int OFFSET_KERNEL_PS4SDK_510 = 0x023D8F38;
-unsigned int OFFSET_KERNEL_PS4SDK_451 = 0x022ABE88;
+unsigned int OFFSET_KERNEL_PS4SDK_200 = 0x031582C8;
+unsigned int OFFSET_KERNEL_PS4SDK_225 = 0x031583A8;
+unsigned int OFFSET_KERNEL_PS4SDK_230 = 0x03158548;
+unsigned int OFFSET_KERNEL_PS4SDK_250 = 0x03158568;
 unsigned int OFFSET_KERNEL_PS4SDK_321 = 0x02209898;
+unsigned int OFFSET_KERNEL_PS4SDK_451 = 0x022ABE88;
+unsigned int OFFSET_KERNEL_PS4SDK_510 = 0x023D8F38;
+unsigned int OFFSET_KERNEL_PS4SDK_550 = 0x023D9048;
+unsigned int OFFSET_KERNEL_PS4SDK_650 = 0x0241ACA8;
+unsigned int OFFSET_KERNEL_PS4SDK_761 = 0x0240BE58;
+
 
 int
 main() {
   notify_request_t req;
 
   bzero(&req, sizeof req);
-  switch(kernel_get_fw_version() & 0xffff0000) {   
+  switch(kernel_get_fw_version() & 0xffff0000) {
+      case 0x2000000:
+        strncpy(req.message, "The PS4 SDK patched to 99.9 - MagicStuff", sizeof req.message);
+        kernel_setint(KERNEL_ADDRESS_TEXT_BASE + OFFSET_KERNEL_PS4SDK_200, 0x99999999);
+        return sceKernelSendNotificationRequest(0, &req, sizeof req, 0);
+
+      case 0x2250000:
+      case 0x2260000:
+        strncpy(req.message, "The PS4 SDK patched to 99.9 - MagicStuff", sizeof req.message);
+        kernel_setint(KERNEL_ADDRESS_TEXT_BASE + OFFSET_KERNEL_PS4SDK_200, 0x99999999);
+        return sceKernelSendNotificationRequest(0, &req, sizeof req, 0);
+
+      case 0x2300000:
+        strncpy(req.message, "The PS4 SDK patched to 99.9 - MagicStuff", sizeof req.message);
+        kernel_setint(KERNEL_ADDRESS_TEXT_BASE + OFFSET_KERNEL_PS4SDK_200, 0x99999999);
+        return sceKernelSendNotificationRequest(0, &req, sizeof req, 0);
+
+      case 0x2500000:
+      case 0x2700000:
+        strncpy(req.message, "The PS4 SDK patched to 99.9 - MagicStuff", sizeof req.message);
+        kernel_setint(KERNEL_ADDRESS_TEXT_BASE + OFFSET_KERNEL_PS4SDK_250, 0x99999999);
+        return sceKernelSendNotificationRequest(0, &req, sizeof req, 0);
+
       case 0x3000000:
       case 0x3100000:
       case 0x3200000:
