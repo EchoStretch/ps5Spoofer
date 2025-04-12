@@ -24,4 +24,3 @@ and to the entire PS5 scene community....
 
 NOTE : Use this payload only in case of emergency, our friend Echo's latest kstuff already has the spoofer incorporated into its code, which is much more elegant than having the payload separately =)
 
-Special thanks to @SonysNightmare, as a programmer he is an excellent comedian =)
