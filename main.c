@@ -19,7 +19,7 @@ unsigned int OFFSET_KERNEL_PS4SDK_510 = 0x023D8F38;
 unsigned int OFFSET_KERNEL_PS4SDK_550 = 0x023D9048;
 unsigned int OFFSET_KERNEL_PS4SDK_650 = 0x0241ACA8;
 unsigned int OFFSET_KERNEL_PS4SDK_761 = 0x0240BE58;
-
+unsigned int OFFSET_KERNEL_PS4SDK_800 = 0x0241BE58;
 
 int
 main() {
@@ -93,6 +93,14 @@ main() {
       case 0x7610000:
         strncpy(req.message, "The PS4 SDK patched to 99.9 - MagicStuff", sizeof req.message);
         kernel_setint(KERNEL_ADDRESS_TEXT_BASE + OFFSET_KERNEL_PS4SDK_761, 0x99999999);  
+        return sceKernelSendNotificationRequest(0, &req, sizeof req, 0);
+    
+      case 0x8000000:
+      case 0x8200000:
+      case 0x8400000:
+      case 0x8600000:
+        strncpy(req.message, "The PS4 SDK patched to 99.9 - MagicStuff", sizeof req.message);
+        kernel_setint(KERNEL_ADDRESS_TEXT_BASE + OFFSET_KERNEL_PS4SDK_800, 0x99999999);  
         return sceKernelSendNotificationRequest(0, &req, sizeof req, 0);
     
   }
